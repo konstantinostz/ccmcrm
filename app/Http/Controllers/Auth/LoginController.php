@@ -28,7 +28,7 @@ class LoginController extends Controller
         $customer->password = Hash::make('test');
         $customer->save();
 
-        Log::info($request);
+        //Log::info($request);
 
 
         $credentials = $request->validate([
