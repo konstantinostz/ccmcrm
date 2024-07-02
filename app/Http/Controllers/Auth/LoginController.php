@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -20,37 +21,41 @@ class LoginController extends Controller
       return inertia::render('Login');
     }
 
+
+
     public function authenticate(Request $request): RedirectResponse
     {    
   
-        $customer = new Customer();
-        $customer->name = 'test';
-        $customer->password = Hash::make('test');
-        $customer->save();
 
-        //Log::info($request);
-
-
+    
         $credentials = $request->validate([
             'name' => ['required', 'max:10'],
             'password' => ['required', 'max:10'],
         ]);
-    
+         
+        
  
         if (Auth::attempt($credentials)) {
-           $test =  $request->session()->regenerate();
-            
-            
-           Log::info($test);
+
+            $request->session()->regenerate();
+            $request->session()->put('globalScope', $credentials);    
+
            
             return redirect()->intended('dashboard');   
         }
         
-       
+        
+
         
         return back()->withErrors([
             'name' => 'The provided credentials do not match ',
             'password' => 'The provided credentials do not match '
         ])->onlyInput('name','password');
     }
+
+
+
+
+
+  
 }

@@ -8,10 +8,6 @@
     errors: {
         type: Object,
         required: true
-    },
-    message: {
-        type: String,
-        required: false
     }
 });
 
@@ -32,17 +28,17 @@ function submit() {
 <template>
   <div class="whole-bg">
   <div class="background">
-    
-<form @submit.prevent="submit">
+  
+<form @submit.prevent="submit" class="form">
     <h3><span class="red-color-ccm">CC</span><span class="black-color-ccm">M</span></h3>
 
     <label for="username">Username</label>
     <input type="text" placeholder="Username" id="name" v-model="form.name">
-    <p v-if="props.errors.name" class="text-danger">{{ props.errors.name }}</p>
+    <p v-if="props.errors.name" class="text-danger custom-display">{{ props.errors.name }}</p>
 
     <label for="password">Password</label>
     <input type="password" placeholder="Password" id="password" v-model="form.password">
-    <p v-if="props.errors.password" class="text-danger">{{ props.errors.password }}</p>
+    <p v-if="props.errors.password" class="text-danger custom-display">{{ props.errors.password }}</p>
 
     <button type="submit">Log In</button>
 </form>
@@ -57,7 +53,7 @@ function submit() {
 
 
 
-<style >
+<style scoped>
 *,
 *:before,
 *:after{
@@ -93,7 +89,7 @@ function submit() {
   font-weight: 900;
 
 }
-form{
+.form{
     height: 520px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
@@ -175,6 +171,23 @@ button{
   margin-right: 4px;
 }
 
+
+
+.custom-display{
+  font-size: 14px;
+  margin-bottom: auto;
+}
+
+
+@media only screen and (max-width: 600px) {
+ 
+.form{
+  width: 350px;
+  margin-top: -60px;
+}
+
+
+ }
 
 </style>
 
