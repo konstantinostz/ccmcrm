@@ -1,5 +1,12 @@
 <script setup>
-  
+  import { ref } from 'vue'
+  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+const theme = ref('light')
+
+function onClick () {
+  theme.value = theme.value === 'light' ? 'dark' : 'light'
+}
 
 
  
@@ -8,46 +15,50 @@
 
 
 
-<template>
+    
+            <template>
+            
+        <v-responsive>
+          <v-app :theme="theme">
+            <v-app-bar class="px-3">
+              <v-spacer></v-spacer>
+              <v-btn
+                :prepend-icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
+                text="Toggle Theme"
+                slim
+                @click="onClick"
+              ></v-btn>
+              <FontAwesomeIcon :icon="['fas', 'sun']" />
        
-      welcome to dashboard
+            </v-app-bar>
 
+            
+            <v-main>
+        <v-container>
+          <v-card title="Card title" text="LOREM IPSUM"></v-card>
+        </v-container>
+      </v-main>
 
+    
+            
+           
+          </v-app>
+        </v-responsive>
 
+      </template>
+      
 
+         
 
-
-
-
-       {{ $page.props.flash.message.name }}
-       {{ $page.props.flash.message.password }}
-
-     
-</template>
+        
+    
 
 
 
 <style>
 
-.input-icons{
-  margin-top: 10px;
- 
-}
 
 
-.custom-btn-search{
-  background-color: none;
-  border: none;
-  background: none;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  
-}
-
-.custome-bg{
-  background-color: #181c1f;
-}
 
 
 </style>

@@ -11,8 +11,15 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.5.2",
+        "@fortawesome/vue-fontawesome": "^3.0.8",
         "@inertiajs/vue3": "^1.2.0",
+        "@mdi/font": "^7.4.47",
+        "@popperjs/core": "^2.11.8",
         "@vitejs/plugin-vue": "^5.0.5",
-        "vue": "^3.4.30"
+        "bootstrap": "^5.3.3",
+        "bootstrap-vue": "^2.23.1",
+        "vue": "^3.4.30",
+        "vuetify": "^3.6.11"
     }
 }
